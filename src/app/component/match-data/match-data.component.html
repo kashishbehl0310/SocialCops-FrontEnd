@@ -1,0 +1,71 @@
+<div class="container">
+  <h1 class="text-center">Ipl data</h1>
+  <div class="row">
+    <div class="col-md-4">
+      <app-chart
+        [title]="'Winning Statistics'"
+        [chartType]="winChartType"
+        [chartData]="winChartData"
+        [withHr]="true"
+        [footerIconClass]="'fa fa-clock-o'"
+        [footerText]="'Campaign sent 2 days ago'">
+    </app-chart>
+    </div>
+    <div class="col-md-4">
+      <app-chart
+        [title]="'Winning Statistics'"
+        [chartType]="statChartType"
+        [chartData]="statChartData"
+        [withHr]="true"
+        [footerIconClass]="'fa fa-clock-o'"
+        [footerText]="'Campaign sent 2 days ago'">
+    </app-chart>
+    </div>
+  </div>
+  <div>
+    <div class="flip" (click)="flipcard1 = !flipcard1">
+      <div class="card" [ngClass]="{flipped: flipcard1}">
+        <div class="face front">
+          No of time the toss winning team won the match.
+        </div>
+        <div class="face back">
+          <b>{{ tosscount }}</b>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="flip" (click)="flipped2 = !flipped2">
+      <div class="card" [ngClass]="{flipped: flipped2}">
+        <div class="face front">
+          Number of teams winnig after choosing to bat
+        </div>
+        <div class="face back">
+          <b>{{ battoss }}</b>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="flip" (click)="flipped3 = !flipped3">
+      <div class="card" [ngClass]="{flipped: flipped3}">
+        <div class="face front">
+          Number of teams winnig after choosing to field
+        </div>
+        <div class="face back">
+          <b>{{ fieldtoss }}</b>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngFor="let data of matchData" >
+    <br>
+    Match {{ data.id }} : {{ data.team1 }} vs {{ data.team2 }} - {{ data.season }}
+  </div>
+  <p>toss count is {{ battoss }}</p>
+  <!-- <ul class="list-group" *ngFor = "let data of matchData">
+    <li class="list-group-item">
+      {{data.id}}
+    </li>
+  </ul> -->
+</div>
